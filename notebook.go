@@ -65,8 +65,22 @@ func (c NotebookCell) MarshalJSON() ([]byte, error) {
 	}
 }
 
+func (c *NotebookCell) Cell() *Cell {
+	switch c.Type {
+	case RawCellType:
+		return &c.Raw.Cell
+	case MarkdownCellType:
+		return &c.Markdown.Cell
+	case CodeCellType:
+		return &c.Code.Cell
+	default:
+		panic(errors.New("Unknown cell type"))
+	}
+
+}
+
 type Cell struct {
-	Id       string                 `json:"cell_id"`
+	Id       string                 `json:"id"`
 	Type     CellType               `json:"cell_type"`
 	Metadata map[string]interface{} `json:"metadata"`
 	Source   Source                 `json:"source"`

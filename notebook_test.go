@@ -36,7 +36,7 @@ func TestRawCell(t *testing.T) {
 		"nbformat_minor": 1,
 		"cells": [
 			{
-				"cell_id": "123",
+				"id": "123",
 				"cell_type": "raw",
 				"metadata": {"format": "mime/type"},
 				"source": "[some nbformat output text]"
@@ -68,7 +68,7 @@ func TestMarkdownCell(t *testing.T) {
 		"nbformat_minor": 1,
 		"cells": [
 			{
-				"cell_id": "123",
+				"id": "123",
 				"cell_type": "markdown",
 				"metadata": {},
 				"source": ["# Header", "body"]
@@ -104,7 +104,7 @@ func TestCodeCell(t *testing.T) {
 		"nbformat_minor": 1,
 		"cells": [
 			{
-				"cell_id": "123",
+				"id": "123",
 				"cell_type": "code",
 				"metadata": {"collapsed": true},
 				"execution_count": 1,
