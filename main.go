@@ -32,6 +32,44 @@ func main() {
 					return nil
 				},
 			},
+			{
+				Name:      "load",
+				Usage:     "Restore to the last saved version of the notebook",
+				ArgsUsage: "Filenames to load",
+				Action: func(ctx *cli.Context) error {
+					if ctx.Args().Len() == 0 {
+						return errors.New("missing filename")
+					}
+					for _, filename := range ctx.Args().Slice() {
+						err := load(filename)
+						if err != nil {
+							return err
+						}
+					}
+					return nil
+				},
+			},
+			{
+				Name:      "revert",
+				Usage:     "Forget the most recently saved notebook, and go back to the previous one",
+				ArgsUsage: "Filenames to revert",
+				Action: func(ctx *cli.Context) error {
+					if ctx.Args().Len() == 0 {
+						return errors.New("missing filename")
+					}
+					for _, filename := range ctx.Args().Slice() {
+						err := revert(filename)
+						if err != nil {
+							return err
+						}
+						err = load(filename)
+						if err != nil {
+							return err
+						}
+					}
+					return nil
+				},
+			},
 		},
 	}
 

@@ -13,3 +13,5 @@
 
 /nbhistory
 /.vscode
+
+.ipynb_checkpoints/
